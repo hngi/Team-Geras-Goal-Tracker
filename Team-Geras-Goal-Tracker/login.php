@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,14 +17,14 @@
 <?php //Login.php
 require_once('dbcon.php');
 $error = $user = "";
-session_start();
 
 if (isset($_SESSION['user'])) {
-    $user = $_SESSION['user'];
-    die(header("location: dash.php"));
+    echo '<meta http-equiv="refresh" content="0;url=dash.php">';
+    die();
 } else {
     $user = "";
 }
+
 function sanitizeString($var)
 {
     $var = strip_tags($var);
@@ -58,7 +59,8 @@ if (isset($_POST['email'])) {
             } else {
                 
                 $_SESSION['user'] = $email;
-                die(header("location: dash.php"));
+                echo '<meta http-equiv="refresh" content="0;url=dash.php">';
+                die();
             }
         
         }
@@ -75,6 +77,7 @@ if (isset($_POST['email'])) {
                 <form class="box" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" enctype="multipart/form-data">
                     <h1>Welcome to Goal Tracker</h1>
                     <h2>Login</h2>
+                    <p class="text-white">You don't have an account? <a href="index.php">Sign up</a></p>
                     <?php echo $error ?>
                     <p class="text-muted"> Please enter your login and password!</p> 
                     <input type="email" class="email" name="email" placeholder="Email ">
