@@ -187,7 +187,6 @@ html, body, #container {
   height: 300PX;
 }
 
-
 @media only screen and (max-width:620px) {
  /* For mobile phones: */
  .wrapper{
