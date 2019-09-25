@@ -89,7 +89,8 @@ if (isset($_POST['btn-signup'])) {
       <div class="column2 card">
         <img class="center" src="img/user.png">
     <h1>Sign Up</h1>
-    <p>It's free and always will be.</p><br>
+    <p>It's free and always will be.</p>
+    <p>You already have an account? <a href="login.php">Sign in</a></p>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" enctype="multipart/form-data" autocomplete="off">
       <?php
           if (isset($msg4)) {
@@ -102,18 +103,18 @@ if (isset($_POST['btn-signup'])) {
           }
 
         ?>
-    <input type="text" class="name" name="firstname" value="<?php echo $firstname?>" placeholder="first name">
+    <input type="text" class="name" name="firstname" value="<?php echo $firstname?>" placeholder="Fullname">
     <span class="text-danger"><?php if(isset($errorfirstname)) echo $errorfirstname; ?></span>
 
-    <input type="email" class="email" name="email" value="<?php echo $email?>" placeholder="enter your email">
+    <input type="email" class="email" name="email" value="<?php echo $email?>" placeholder="Email">
     <span class="text-danger"><?php if(isset($errorEmail)) echo $errorEmail; ?></span>
 
-    <input type="password" class="pasword" name="pwd" placeholder="enter your password">
+    <input type="password" class="pasword" name="pwd" placeholder="Password">
 
-    <input type="password" class="pasword" name="cpwd" placeholder="enter your password again">
+    <input type="password" class="pasword" name="cpwd" placeholder="Confirm Password">
     <span class="text-danger"><?php if(isset($cpwdpwd)) echo $cpwdpwd; ?></span>
 
-    <input type="number" class="number" name="phoneno" value="<?php echo $phoneno?>" placeholder="mobile number">
+    <input type="number" class="number" name="phoneno" value="<?php echo $phoneno?>" placeholder="Mobile Number">
 
 <br><br><br>
     <label>Birthday</label>
@@ -233,7 +234,7 @@ if (isset($_POST['btn-signup'])) {
   <img class="img" src="img/reader.jpeg">
   <h1>Our Partners</h1>
   <div class="partner">
-  <img class="img3" src="img/HNG.PNG">
+  <img class="img3" src="img/hng.png">
   <img class="img3" src="img/FLW-logo.svg">
   <img class="img3" src="img/lucid-logo.svg">
 </div>
