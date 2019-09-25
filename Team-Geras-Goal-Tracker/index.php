@@ -57,9 +57,13 @@ if (isset($_POST['btn-signup'])) {
     
   //insert data if no error
       if (!$error) {
-    $sql1 = "INSERT INTO gtrack( firstname, email, pwd, gender, day, month, Year, phoneno) VALUES('$firstname', '$email', '$pwd', '$gender', '$day', '$month', '$Year', '$phoneno')";
+        $salt1 = "qm&h*";
+        $salt2 = "pg!@";
+        $pwd = md5("$salt1$pwd$salt2");
+    $sql1 = "INSERT INTO user(user_id, firstname, email, password, phoneno, day, month, year, gender) VALUES(NULL, '$firstname', '$email', '$pwd', '$phoneno', '$day', '$month', '$Year', '$gender')";
     if (mysqli_query($conn, $sql1)) {
       $msg4 = '<h5>Register successfully</h5>';
+      header("location:login.php");
     }else{
       echo "Error " .mysqli_error($conn);
     }
@@ -215,7 +219,7 @@ if (isset($_POST['btn-signup'])) {
 <select name="gender">
                 <option>Male</option>
                 <option>Female</option>
-              </select>
+</select>
 
 <br><br><br>
 <p2>By clicking Sign Up, you have agree to our <a href="#">Terms and Conditions</a> and that you have read our <a href="#">Data Policy</a>, including our <a href="#">Cookie Use</a>.</p2>
