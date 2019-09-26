@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 25, 2019 at 02:51 AM
+-- Generation Time: Sep 25, 2019 at 09:14 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -33,7 +33,9 @@ CREATE TABLE IF NOT EXISTS `goals` (
   `goal_id` int(25) NOT NULL AUTO_INCREMENT,
   `user_id` int(25) NOT NULL,
   `title` varchar(25) NOT NULL,
+  `category` varchar(25) DEFAULT NULL,
   `description` text,
+  `complete` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`goal_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
