@@ -20,24 +20,29 @@
         </div>
         <div class="right-box">
             <div>
-                <form method="post">
+                <form method="post" action= "<?php $_SERVER['PHP_SELF'] ?>">
                     <?php
-                     require_once('dbcon.php');
-                     if(isset($_POST['submit'])){
-                         $goal = $_POST['title'];
-                         $task = $_POST['description'];
-                         $query = "INSERT INTO goals (title,description) VALUES('','','$goal','','$task') ";
-                         $run_query = mysqli_query($conn,$query);
-                     }
+                        $servername = 'localhost';
+                        $username = 'root';
+                        $password = '';
+                        $dbname = 'goal_tracker';
+                        
+                        $conn = mysqli_connect($servername, $username, $password, $dbname);
+                        
+                        if (isset($_POST['submit'])){
+                            $goal = $_POST['title'];
+                            $task = $_POST['description'];
+                            $query = "INSERT INTO goals (title,description) VALUES('$goal','$task') ";
+                            $run_query = mysqli_query($conn,$query);
+                        }
                     ?>
-
                     <label style="margin-left: 4.5em">GOAL:</label> 
                     <input type="text" text-align="start" name = "title" style="margin-left: 2.9em" id="textbox" placeholder=" Enter goal"><br><br>
                     <label style="margin-left: 4.5em">TASK:</label> 
                     <input type="text" style="margin-left: 3.5em" name="description" placeholder=" Enter Task"><br><br>
                     <label style="margin-left: 4.5em">CREATED</label> 
                     <input type="date" style="margin-left: 4.1em" name="date" placeholder=" Enter Date">
-                    <p><input type="submit" style="margin-left: 6em " name="submit"  value = 'Create Goal'></p>
+                    <p><input type="submit" style="margin-left: 8em " name="submit"  value = 'Create Goal'></p>
                     <br><br><br>
                 </form>
             </div>
@@ -48,9 +53,9 @@
                     $title1 = $row['title'];
                     $description = $row['description'];
                 ?>
-                <h4><?php echo $title1; ?></h4>
-                <p><?php echo $description; ?></p>
-                  <?php } ?>
+                    <h4><?php echo $title1; ?></h4>
+                    <p><?php echo $description; ?></p>
+                <?php } ?>
             </div>
         </div>
     </div>
