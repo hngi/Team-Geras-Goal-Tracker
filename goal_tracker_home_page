@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Team geras</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  body {
+  background-image: url("https://res.cloudinary.com/dhtwv1cwv/image/upload/v1569582542/azi6/Surfing-Pier-Beach-03015-small_cs89wi.jpg");
+}
+    
+    .row.content {height: 550px}
+    
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+        
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row content">
+		<div class="col-sm-3 sidenav hidden-xs">								
+		  <img src="https://res.cloudinary.com/hammedroy/image/upload/v1566578792/samples/IMG_20190731_125626_4_ta28lm.jpg" class="img-circle" alt="Hammed" width="304" height="236">
+		  <p>Hammed</p>
+		  <ul class="nav nav-pills nav-stacked">
+			<li class="active"><a href="#section1">Dashboard</a></li>
+			<li><a href="#section2">Age</a></li>
+			<li><a href="#section3">Gender</a></li>
+			<li><a href="#section3">Geo</a></li>
+			<li><a href="#section1">Dash</a></li>
+			<li><a href="#section2">Age</a></li>
+			<li><a href="#section3">Gender</a></li>
+			<li><a href="#section3">Geo</a></li>
+		  </ul><br>
+		</div>
+	
+		<br>	
+		<div class="col-sm-9">
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			  <a class="navbar-brand">What have you achieved today?</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+			  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> LOG OUT</a></li>
+			</ul>
+		  </div>
+		</nav>
+		<div class="well well-sm">
+			<h4>Dashboard</h4>        
+		</div>     
+		<div class="row">
+			<div class="col-sm-4">
+			
+				 <div class="well">
+					<div class="panel-group">
+					<div class="panel panel-default">
+					  <div class="panel-heading">task target</div>
+					  <div class="panel-body">Panel Content</div>
+					</div>
+					<div class="panel panel-default">
+					  <div class="panel-heading">task target</div>
+					  <div class="panel-body">Panel Content</div>
+					</div>
+					<div class="panel panel-default">
+					  <div class="panel-heading">task target</div>
+					  <div class="panel-body">Panel Content</div>
+					</div>
+					<div class="panel panel-default">
+					  <div class="panel-heading">task target</div>
+					  <div class="panel-body">Panel Content</div>
+					</div>
+				  </div>
+				</div> 
+			</div>
+			<div class="col-sm-4">
+				<div class="well">
+					<p>Tasks for today</p>
+					<div class="checkbox">
+					<ul>
+					  <li><label><input type="checkbox" name="remember"> podium</label></li>
+					  <li><label><input type="checkbox" name="remember"> lorem</label></li>
+					  <li><label><input type="checkbox" name="remember"> lorem</label></li>
+					  <li><label><input type="checkbox" name="remember"> lorem</label></li>
+					  <li><label><input type="checkbox" name="remember"> podium</label></li>
+					  </ul>
+					</div>
+				</div>
+			</div> 
+			<div class="col-sm-4">
+			  <div class="well">
+				<p>Text</p> 
+				<p>Text</p> 
+				<p>Text</p> 
+			  </div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+
+</body>
+</html>
