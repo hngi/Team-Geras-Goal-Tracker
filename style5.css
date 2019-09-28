@@ -9,58 +9,52 @@ body{
 }
 
 #login-box{
-    position: absolute;
-    margin: 5% auto;
-    top: -65;
-    height: 800px;
-    width: 1300px;
-    background: black;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0.6);
 }
 
 .left-box{
-    position: absolute;
-    top: 0;
-    left: 0;
-    box-sizing: border-box;
-    padding: 40px;
-    width: 600px;
-    height: 400px;
+    padding: 5px auto;
+    width: 25%;
+    height: 100%;
+    float: left;
+    background-color: #000;
+    text-align: center;
 }
 
 .avatar{
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    top: -50px;
-    position: relative;
+    margin: 20px auto;
 }
 
 h3{
     font-family: calibri;
-    top: 10;
     color: white;
+    text-align: center;
 }
 
 h1{
-    position: relative;
     font-family: calibri;
     color: white;
-    top: -20%;
-    font-size: 50px;
+    text-align: center;
 }
 
 .right-box{
-    position: absolute;
-    top: 0;
-    right: 0;
-    box-sizing: border-box;
-    width: 1000px;
-    padding: 40px;
-    height: 800px;
+    width: 75%;
+    padding: 0;
+    height: auto;
     background-color: aliceblue;
     background-size: cover;
-    border-style: none;
+    float: right;
+}
+
+.right-box div {
+    padding: 40px;
 }
 
 label{
@@ -84,4 +78,12 @@ label{
     top: 100;
     border: groove;
     border-collapse: black;
+}
+
+.right-box .top-box {
+    margin: 0;
+    padding: 5px 10px;
+    color: FFF;
+    background: #000;
+    min-height: 80px;
 }
