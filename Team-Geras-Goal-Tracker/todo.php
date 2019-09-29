@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('dbcon.php');
+$pagename = "Todo";
 $msg = $error = "";
 
 if (!isset($_SESSION['user'])) {
@@ -55,6 +56,8 @@ echo $_GET['view'];
 		$redirect = "goals.php";
 		$red = "";
 	}
+
+require_once('header.php');
 echo <<<_END
 <div>
 	<p>$msg $error</p>
@@ -97,13 +100,15 @@ _END;
 		} else {
 			$check = "checked";
 		}
+
+require_once('header.php');
 echo <<<_END
 <div>
 	<p>$msg $error</p>
 	<form method="post" action="todo.php?edit=$todo_id">
 		<input type="text" name="title" placeholder="" value="$todo[title]" /> <br />
 		<input type="checkbox" name="complete" value="completed" $check /> Completed <br />
-		<button type="submit">Update</button>
+		<button type="submit"  class='btn info'><i class="fa"></i>Update</button>
 		<a href="">Cancel</a>
 	</form>
 </div>
@@ -129,9 +134,11 @@ _END;
 		$_SESSION['alert'] = $msg;
 		header("Location: todo.php?view=$goal_id");
 	} else {
+
+require_once('header.php');
 echo <<<_END
-<p> Are you sure you want to delete this Todo
-<a href="todo.php?del=$id&goal=$goal_id&ans=yes">Yes</a> || <a href="todo.php?del=$id&goal=$goal_id&ans=no">No</a>
+<p> Are you sure you want to delete this Todo</p><br />
+<a href="todo.php?del=$id&goal=$goal_id&ans=yes" class="btn danger"><i class="fa"></i>Yes</a>  <a href="todo.php?del=$id&goal=$goal_id&ans=no" class="btn"><i class="fa"></i>No</a>
 _END;
 		die();
 	}
@@ -143,9 +150,14 @@ _END;
 		$result = mysqli_query($conn, $query);
 		$goal = mysqli_fetch_assoc($result);
 
+require_once('header.php');
+
+echo "<h4></ph4>";
 echo <<<_END
 		<div>$msg
-		<a href="goals.php">Go back to goal</a>
+		<a href="goals.php" class='btn info'>Go back to goal</a> 
+		<a href='todo.php?goal_id=$id&view=$id' class='btn info'>Add new todo</a>
+		<br />
 		<h3>$goal[title]</h3>
 		<p>$goal[description]</p>
 		
@@ -156,12 +168,9 @@ _END;
 		$not_completed = 0;
 		$row = mysqli_num_rows($result1);
 
-		echo "<p><b>Todos</b><br />";
+		echo "<p><b>Todos</b></p>";
 		for ($j = 0;$j < $row;++$j) {
 			$todos = mysqli_fetch_array($result1, MYSQLI_ASSOC);
-
-				echo "$todos[title] <a href='todo.php?edit=$todos[todo_id]'>Edit</a> | ";
-				echo "<a href='todo.php?del=$todos[todo_id]&goal=$todos[goal_id]'>Delete</a>";
 
 			if ($todos['completed'] == 1) {
 				$completed = $completed + 1;
@@ -170,9 +179,14 @@ _END;
 				$not_completed = $not_completed + 1;
 				$pro = " - Not completed";
 			}
-			echo "$pro <br />";
+
+echo <<<_END
+				<h5 class='gray'>$todos[title] $pro  <a href="todo.php?edit=$todos[todo_id]" class="btn"><i class="fa fa-pencil"></i></a>
+				<a href="todo.php?del=$todos[todo_id]&goal=$todos[goal_id]" class="btn danger"><i class="fa fa-trash"></i></a>
+
+			</h5>
+_END;
 		}
-		echo "<a href='todo.php?goal_id=$id&view=$id'>Add new todo</a></p>";
 
 		if ($not_completed == 0) {
 			$pro = "Completed";
@@ -193,4 +207,5 @@ _END;
 	}
 }
 
+require_once('footer.php');
 ?>

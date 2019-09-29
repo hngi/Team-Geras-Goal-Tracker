@@ -8,8 +8,6 @@
 }
 
 .wrapper > div {
- /* border: 2px solid rgb(63, 59, 54); */
-  padding: 1px;
   color: green;
 }
 
@@ -33,12 +31,10 @@
 }
 
 .third {
-  grid-column: 2/7;
-  grid-row: 1/10; 
   background: url(image/backimg.png) no-repeat center center ; 
-  background-size: contain; 
-  border: solid gray;
-  border-width: 8px ;
+  background-size: contain;
+  border: none;
+    padding: 50px 30px;
 }
 
 .footer {
@@ -185,6 +181,25 @@ html, body, #container {
   margin-right: 20px;
   width: 300PX;
   height: 300PX;
+}
+
+/* Style buttons */
+.btn {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+
+.third a {
+  color: white;
 }
 
 @media only screen and (max-width:620px) {

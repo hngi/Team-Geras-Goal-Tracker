@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('dbcon.php');
+$pagename = "Goals";
 
 if (!isset($_SESSION['user'])) {
 	die(header("Location: login.php"));
@@ -37,9 +38,10 @@ if (isset($_GET['del'])) {
 	} elseif (isset($_GET['ans']) && $_GET['ans'] == "no") {
 		$msg = "Delete Cancelled";
 	} else {
+require_once('header.php');
 echo <<<_END
 <p> Are you sure you want to delete this goal
-<a href="goals.php?del=$id&ans=yes">Yes</a> || <a href="goals.php?del=$id&ans=no">No</a>
+<a href="goals.php?del=$id&ans=yes" class="btn danger"><i class="fa"></i>Yes</a> || <a href="goals.php?del=$id&ans=no" class="btn"><i class="fa"></i>No</a>
 _END;
 		die();
 	}
@@ -47,6 +49,7 @@ _END;
 	# code...
 }
 
+require_once('header.php');
 echo $error . $msg . "<br><br>";
 
 $query = "SELECT * FROM goals WHERE user_id = '$user_id' ORDER BY goal_id DESC";
@@ -87,10 +90,13 @@ if ($row == 0) {
 			$per = number_format($per, 2);
 		}
 
-	    echo "<a href=todo.php?view=" . $g_id . ">$goals[title]</a> $per% $pro <br>";
-	    echo $goals['description'] . "<br>";
-	    echo "<a href=goals.php?del=" . $g_id . ">Delete</a><br><br>";
+		echo "<p>";
+	    echo "<a href=todo.php?view=" . $g_id . ">$goals[title]</a> $per% $pro <br />";
+	    echo $goals['description'] . "<br /><br />";
+	    echo "<a href=goals.php?del=" . $g_id . ' class="btn danger"><i class="fa fa-trash"></i> Delete</a><br><br>';
+	    echo "</p>";
 	}
 }
 
+require_once('footer.php');
 ?>
