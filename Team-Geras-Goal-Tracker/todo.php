@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('dbcon.php');
+$msg = $error = "";
 
 if (!isset($_SESSION['user'])) {
 	die(header("Location: login.php"));
@@ -12,6 +13,13 @@ if (!isset($_SESSION['user'])) {
 	$user_id = $user['user_id'];
 }
 
+if (isset($_SESSION['alert'])) {
+	$msg = "<p>" . $_SESSION['alert'] . "</p>";
+	$_SESSION['alert'] = "";
+} else {
+	$msg = "";
+}
+
 function sanitizeString($var)
 {
     $var = strip_tags($var);
@@ -20,7 +28,6 @@ function sanitizeString($var)
     return $var;
 }
 
-$msg = $error = "";
 
 if (isset($_GET['goal_id']) && $_GET['goal_id'] != "" && !isset($_GET['edit'])) { // Add todo
 	$goal_id = sanitizeString($_GET['goal_id']);
@@ -102,6 +109,33 @@ echo <<<_END
 </div>
 _END;
 	}
+} elseif (isset($_GET['del']) && isset($_GET['goal'])) { // Delete todo
+	$id = sanitizeString($_GET['del']);
+	$goal_id = sanitizeString($_GET['goal']);
+
+	if (isset($_GET['ans']) && $_GET['ans'] == "yes") {
+		$query = "DELETE FROM todo WHERE todo_id = $id";
+		if (mysqli_query($conn, $query)) {
+			$msg = "Deleted Successfully";
+			$_SESSION['alert'] = $msg;
+			header("Location: todo.php?view=$goal_id");
+		} else {
+			$error = "Didn't Deleted Successfully";
+			$_SESSION['alert'] = $error;
+			header("Location: todo.php?view=$goal_id");
+		}
+	} elseif (isset($_GET['ans']) && $_GET['ans'] == "no") {
+		$msg = "Delete Cancelled";
+		$_SESSION['alert'] = $msg;
+		header("Location: todo.php?view=$goal_id");
+	} else {
+echo <<<_END
+<p> Are you sure you want to delete this Todo
+<a href="todo.php?del=$id&goal=$goal_id&ans=yes">Yes</a> || <a href="todo.php?del=$id&goal=$goal_id&ans=no">No</a>
+_END;
+		die();
+	}
+
 } else { //view all todos under a goal
 	if (isset($_GET['view']) && $_GET['view'] != "") {
 		$id = sanitizeString($_GET['view']);
@@ -110,13 +144,13 @@ _END;
 		$goal = mysqli_fetch_assoc($result);
 
 echo <<<_END
-		<div>
+		<div>$msg
 		<a href="goals.php">Go back to goal</a>
 		<h3>$goal[title]</h3>
 		<p>$goal[description]</p>
 		
 _END;
-		$query1 = "SELECT * FROM todo WHERE goal_id = '$id'";
+		$query1 = "SELECT * FROM todo WHERE goal_id = '$id' ORDER BY todo_id DESC";
 		$result1 = mysqli_query($conn, $query1);
 		$completed = 0;
 		$not_completed = 0;
@@ -126,7 +160,9 @@ _END;
 		for ($j = 0;$j < $row;++$j) {
 			$todos = mysqli_fetch_array($result1, MYSQLI_ASSOC);
 
-				echo "$todos[title] <a href='todo.php?edit=$todos[todo_id]'>Edit</a>";
+				echo "$todos[title] <a href='todo.php?edit=$todos[todo_id]'>Edit</a> | ";
+				echo "<a href='todo.php?del=$todos[todo_id]&goal=$todos[goal_id]'>Delete</a>";
+
 			if ($todos['completed'] == 1) {
 				$completed = $completed + 1;
 				$pro = " - Completed";
@@ -145,6 +181,7 @@ _END;
 			$total = $not_completed + $completed;
 			$pro = "Complete";
 			$per = ($completed / $total) * 100;
+			$per = number_format($per, 2);
 		}
 echo <<<_END
 			<h2>$per% $pro</h2>

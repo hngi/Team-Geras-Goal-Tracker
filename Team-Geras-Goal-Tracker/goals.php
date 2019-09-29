@@ -84,6 +84,7 @@ if ($row == 0) {
 			$total = $not_completed + $completed;
 			$pro = "Complete"; 
 			$per = ($completed / $total) * 100;
+			$per = number_format($per, 2);
 		}
 
 	    echo "<a href=todo.php?view=" . $g_id . ">$goals[title]</a> $per% $pro <br>";
