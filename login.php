@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Goal Tracker | Login</title>
+    <title>Goal Tracker</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
@@ -76,9 +75,11 @@ if (isset($_POST['email'])) {
         <div class="col-md-6">
             <div class="card">
                 <form class="box" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" enctype="multipart/form-data">
+                    <h1>Welcome to Goal Tracker</h1>
                     <h2>Login</h2>
-                    <p>You don't have an account? <a href="index.php">Sign up</a></p>
+                    <p class="text-white">You don't have an account? <a href="index.php">Sign up</a></p>
                     <?php echo $error ?>
+                    <p class="text-muted"> Please enter your login and password!</p> 
                     <input type="email" class="email" name="email" placeholder="Email ">
                     <input type="password" name="password" placeholder="Password"> <a class="forgot text-muted" href="#">Forgot password?</a> 
                     <input type="submit" name="" value="Login">
