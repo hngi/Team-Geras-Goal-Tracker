@@ -78,7 +78,8 @@ if (isset($_POST['btn-signup'])) {
 </head>
 
 <body>
-  <div class="container">
+  <section>
+    <div class="container">
     <div class="row">
       <div class="col-md-6">
         <div class="card">
@@ -124,6 +125,6 @@ if (isset($_POST['btn-signup'])) {
     </div>
   </div>
   </div>
+  </section>
 </body>
-
 </html>
