@@ -74,6 +74,7 @@ if (isset($_POST['btn-signup'])) {
 ?>
 
 <html>
+<<<<<<< HEAD
   <head>
     <title>SignUp Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -82,6 +83,24 @@ if (isset($_POST['btn-signup'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
+=======
+
+<head>
+  <title>Goal Tracker | Sign Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+  <section>
+    <div class="container">
+>>>>>>> bd8d33a85f1c9452b2bc5f95d15768db16b0d130
     <div class="row">
       <div class="column1 img1">
         <h1>WE break your GOALS into smaller bits.</h1>
@@ -240,8 +259,43 @@ if (isset($_POST['btn-signup'])) {
 </div>
 </div>
 
+<<<<<<< HEAD
 
 
   </div>
   </body>
 </html>
+=======
+            ?>
+            <input type="text" class="name" name="firstname" value="<?php echo $firstname ?>" placeholder="Fullname">
+            <span class="text-danger"><?php if (isset($errorfirstname)) echo $errorfirstname; ?></span>
+
+            <input type="email" class="email" name="email" value="<?php echo $email ?>" placeholder="Email">
+            <span class="text-danger"><?php if (isset($errorEmail)) echo $errorEmail; ?></span>
+
+            <input type="password" name="pwd" placeholder="Password">
+
+            <input type="password" name="cpwd" placeholder="Confirm Password">
+            <span class="text-danger"><?php if (isset($cpwdpwd)) echo $cpwdpwd; ?></span>
+
+            <input type="number" name="phoneno" value="<?php echo $phoneno ?>" placeholder="Mobile Number">
+            <span class="text-danger"><?php if (isset($errorphone)) echo $errorphone; ?></span>
+
+            <input type="submit" name="btn-signup" Value="Sign Up">
+            <div class="col-md-12" id="social">
+              <ul class="social-network social-circle">
+                <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#" class="icoTwitter" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#" class="icoGoogle" title="Google +"><i class="fab fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </section>
+</body>
+</html>
+>>>>>>> bd8d33a85f1c9452b2bc5f95d15768db16b0d130
