@@ -29,7 +29,7 @@ echo <<<_END
       <div class="row margin-50">
         <div class="col-12">
           <ul>
-            <li><a href="dash.php" class=""><img src="img/dash1.png"> Dashboard</a></li>
+            <li><a href="dashboard.php" class=""><img src="img/dash1.png"> Dashboard</a></li>
             <li><a href=""><img src="img/addgoal.png"> Create Goal</a></li>
             <li><a href="goals.php"><img src="img/goal.png"> Goals</a></li>
           </ul>

@@ -17,7 +17,7 @@ if (!isset($_SESSION['user'])) {
 
 if (isset($_SESSION['user'])) { /* Page to output if login was successful */
 
-$pagename = "Welcome $user[firstname]";
+$pagename = "$user[firstname] Dashboard";
 echo <<<_END
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +47,7 @@ echo <<<_END
       <div class="row margin-50">
         <div class="col-12">
           <ul>
-            <li><a href="dash.php" class="active"><img src="img/dash1.png"> Dashboard</a></li>
+            <li><a href="dashboard.php" class="active"><img src="img/dash1.png"> Dashboard</a></li>
             <li><a href=""><img src="img/addgoal.png"> Create Goal</a></li>
             <li><a href="goals.php"><img src="img/goal.png"> Goals</a></li>
           </ul>
