@@ -178,16 +178,16 @@ _END;
 
       switch ($per) {
           case $per <= 20:
-              $color = "bg-danger";
+              $color = "danger";
               break;
           case $per <= 50:
-              $color = "bg-warning";
+              $color = "warning";
               break;
           case $per <= 75:
-              $color = "bg-primary";
+              $color = "primary";
               break;
           case $per <= 100:
-              $color = "bg-success";
+              $color = "success";
               break;
           default:
               $color = "";
@@ -203,9 +203,9 @@ echo <<<_END
             </div>
             <div class="col-6 col-md-4">
               <div class="progress">
-                <span class="$color" style="width: $width%;"></span>
+                <span class="bg-$color" style="width: $width%;"></span>
               </div>
-              <b class="text-warning ml-1">$per%</b>
+              <b class="text-$color ml-1">$per%</b>
             </div>
           </div>
 
