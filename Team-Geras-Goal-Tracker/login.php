@@ -19,7 +19,7 @@ require_once('dbcon.php');
 $error = $user = "";
 
 if (isset($_SESSION['user'])) {
-    echo '<meta http-equiv="refresh" content="0;url=dash.php">';
+    echo '<meta http-equiv="refresh" content="0;url=dashboard.php">';
     die();
 } else {
     $user = "";
@@ -59,7 +59,7 @@ if (isset($_POST['email'])) {
             } else {
                 
                 $_SESSION['user'] = $email;
-                echo '<meta http-equiv="refresh" content="0;url=dash.php">';
+                echo '<meta http-equiv="refresh" content="0;url=dashboard.php">';
                 die();
             }
         
