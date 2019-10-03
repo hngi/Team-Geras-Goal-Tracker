@@ -7,62 +7,47 @@ echo <<<_END
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
     <title>$pagename</title>
-    <style>
-	.btn {
-	  background-color: DodgerBlue;
-	  border: none;
-	  color: white;
-	  padding: 12px 16px;
-	  font-size: 16px;
-	  cursor: pointer;
-	}
-
-	/* Darker background on mouse-over */
-	.btn:hover {
-	  background-color: RoyalBlue;
-	}
-	.gray {color: #3d3d3d; text-align: left;}
-	.danger {background-color: #f44336;} /* Red */
-	.danger:hover {background: #da190b;}
-	.info {
-  		border-color: #2196F3;
-  		color: white;
-	}
-	.third {
-		border: none;
-	}
-
-.info:hover {
-  background: #2196F3;
-  color: white;
-}
-	</style>
 </head>
 <body>
-    <div class="wrapper">
-
-        <div class="first">
-            <a class="click-toggle" href="#">
-            <img  class="star" src="image/star.png"> 
-            </a>
-            <p class="sim-p">SIMPLIFY LIFE</p>
+  <div class="menu">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <img src="img/star.png" />
+          <span>SIMPLIFY LIFE</span>
         </div>
-
-        <div class="second">
-            <img class="logo center" src="image/logo.png">
-            <h5>$user[firstname]</h5>
-
-            <Center> <a class="center flow side-menu" href="dashboard.php"> <img class="m-img" src="image/goal.jpg">  Dashboard </a> </Center> <br>
-
-            <center> <a class="center side-menu" href="goals.php"> <img class="m-img" src="image/statistics.png"> Goals Stat </a> </center> <br>
-
-             <Center> <a class="center l-down"  href="logout.php">  <u>LOG OUT </u> </a> </center><br>
+      </div>
+      <div class="row center">
+        <div class="col-12">
+          <img src="img/user.png" class="logo-img" />
+          <h6>$user[firstname]</h6>
         </div>
-
-        <div class="third">
+      </div>
+      <div class="row margin-50">
+        <div class="col-12">
+          <ul>
+            <li><a href="dash.php" class=""><img src="img/dash1.png"> Dashboard</a></li>
+            <li><a href=""><img src="img/addgoal.png"> Create Goal</a></li>
+            <li><a href="goals.php"><img src="img/goal.png"> Goals</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6">
+          <a href="#"><b>What have you achieved today?</b></a>
+        </div>
+        <div class="col-6 justify-content-end text-right">
+          <a href="logout.php" class=""><b>Log out</b></a>
+        </div>
+      </div>
+      <div class="row margin-50">
 _END;
 
 ?>

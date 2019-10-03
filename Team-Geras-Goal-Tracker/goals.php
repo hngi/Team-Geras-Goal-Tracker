@@ -91,7 +91,7 @@ if ($row == 0) {
 		}
 
 		echo "<p>";
-	    echo "<a href=todo.php?view=" . $g_id . ">$goals[title]</a> $per% $pro <br />";
+	    echo "<a class=title href=todo.php?view=" . $g_id . ">$goals[title]</a> $per% $pro <br />";
 	    echo $goals['description'] . "<br /><br />";
 	    echo "<a href=goals.php?del=" . $g_id . ' class="btn danger"><i class="fa fa-trash"></i> Delete</a><br><br>';
 	    echo "</p>";
