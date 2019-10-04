@@ -1,0 +1,101 @@
+body {
+  height: 100%;
+}
+
+header {
+  box-sizing: border-box;
+  background: black;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  transition: max-height 0.5s ease-out;
+}
+
+.topnav {
+  background-color: none;
+  overflow: hidden;
+  width: 100%;
+}
+
+.simp_life {
+  float: left;
+}
+
+.rest {
+  float: right;
+  margin-right: 5px;
+  margin: 0px;
+}
+
+.topnav a {
+  color: whitesmoke;
+  display: block;
+  float: left;
+  font-size: 1.3rem;
+  padding: 20px 10px 30px 25px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  background-color: none;
+  color: wheat;
+}
+
+.topnav a:active {
+  background-color: #776;
+  color: white;
+}
+
+#pass_div {
+  margin: 30px 0 0 20px;
+  font-size: 20px;
+  border-bottom: 1px solid lightgrey;
+}
+
+#form_div {
+  font-size: 20px;
+  margin: 70px 0 0 60px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 5px #999;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
+.down {
+  margin-top: 120px;
+  background: #333;
+  padding: 1px;
+  /* font-size: 1.3rem; */
+  color: #f4f4f4;
+  width: 100%;
+  clear: both;
+}
+
+.ul {
+  list-style: none;
+  font-size: 1rem;
+}
+
+li {
+  display: inline;
+}
