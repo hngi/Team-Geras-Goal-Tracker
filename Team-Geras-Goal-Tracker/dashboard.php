@@ -251,6 +251,16 @@ echo <<<_END
         </div>
       </div>
     </div>
+    <footer>
+        <div class="row">
+          <div class="col-12 mt-5">
+            <a href="faq.html">FAQ</a> | 
+            <a href="">Privacy Policy</a> | 
+            <a href="">Nono</a> |  
+            <a href="">Nono</a>
+          </div>
+        </div>
+      </footer>
   </div>
 </body>
 </html>
