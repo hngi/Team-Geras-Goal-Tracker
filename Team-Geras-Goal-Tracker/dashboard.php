@@ -63,13 +63,13 @@ echo <<<_END
         <a class="nav-link" href="#">Team</a>
       </li>
       <li class="nav-item">
-        <a href="logout.php" class=""><b>Log out</b></a>
+        <a href="logout.php" class="nav-link"><b>Log out</b></a>
       </li>      
     </ul>
   </div>
 </nav>
 
-  <div class="menu">
+  <div class="menu pt-2">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -94,11 +94,13 @@ echo <<<_END
       </div>
     </div>
   </div>
-  <div class="main">
+  <div class="main mt-5 pt-2">
     <div class="container-fluid">
       <div class="row">
         <div class="col-6">
           <a href="#"><b>What have you achieved today?</b></a>
+        </div>
+      </div>
       <div class="row margin-50">
 _END;
 //End of Output the head and Nav Bar
@@ -289,10 +291,7 @@ echo <<<_END
       <footer>
         <div class="row">
           <div class="col-12 mt-5">
-            <a href="faq.html">FAQ</a> | 
-            <a href="">Privacy Policy</a> | 
-            <a href="">Nono</a> |  
-            <a href="">Nono</a>
+            
           </div>
         </div>
       </footer>
@@ -305,22 +304,6 @@ echo <<<_END
 
 _END;
 
-/**
-
-        </div>
-
-        <div class="footer">
-            <p class="footer-p"> <span class="left"> TERMS OF USE </span> <span class="middle"> PRIVACY OF POLICY </span>
-            <span class="right">&copy;2019</span> </p>                   
-
-        </div>
-
-    </div>
-
-    <script src="script/main.js"></script>
-</body>
-</html>
-**/
 } else {
   header("location:login.php");
 }

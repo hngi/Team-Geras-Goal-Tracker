@@ -138,7 +138,7 @@ _END;
 require_once('header.php');
 echo <<<_END
 <p> Are you sure you want to delete this Todo</p><br />
-<a href="todo.php?del=$id&goal=$goal_id&ans=yes" class="btn danger"><i class="fa"></i>Yes</a>  <a href="todo.php?del=$id&goal=$goal_id&ans=no" class="btn"><i class="fa"></i>No</a>
+<a href="todo.php?del=$id&goal=$goal_id&ans=yes" class="">Yes</a> | <a href="todo.php?del=$id&goal=$goal_id&ans=no" class="">No</a>
 _END;
 		die();
 	}
@@ -181,8 +181,8 @@ _END;
 			}
 
 echo <<<_END
-				<h5 class='gray'>$todos[title] $pro  <a href="todo.php?edit=$todos[todo_id]" class="btn"><i class="fa fa-pencil"></i></a>
-				<a href="todo.php?del=$todos[todo_id]&goal=$todos[goal_id]" class="btn danger"><i class="fa fa-trash"></i></a>
+				<h5 class='gray'>$todos[title] $pro  <a href="todo.php?edit=$todos[todo_id]" class="">Edit</a>
+				<a href="todo.php?del=$todos[todo_id]&goal=$todos[goal_id]" class="">Delete</a>
 
 			</h5>
 _END;
