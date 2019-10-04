@@ -16,21 +16,21 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">Geras Goal Tracker</a>
+  <a class="navbar-brand" href="dashboard.php">Geras Goal Tracker</a>
   <button
     class="navbar-toggler"
     type="button"
     data-toggle="collapse"
-    data-target="#navbarsExampleDefault"
-    aria-controls="navbarsExampleDefault"
+    data-target="#navbarNav"
+    aria-controls="navbarsNav"
     aria-expanded="false"
     aria-label="Toggle navigation"
   >
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse" id="navbarsNav">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <a class="nav-link" href="dashboard.php"
           >Home <span class="sr-only">(current)</span></a
