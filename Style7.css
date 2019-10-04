@@ -1,0 +1,19 @@
+body{
+    margin: 0%;
+    padding: 0%;
+    background: white;
+    font-family: sans-serif;
+}
+
+#login-box{
+    padding: 0%;
+    background: transparent;
+    margin: 5%;
+    top: 80;
+}
+
+.left-box{
+    position: absolute;
+    top: 0;
+    margin: 5;
+}
