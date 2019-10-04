@@ -4,11 +4,12 @@ require_once('dbcon.php');
 $t_goal = $t_todo = $c_goal = $c_todo = $width = 0;
 $color = "";
 
+//Test if the user is logged in 
 if (!isset($_SESSION['user'])) {
   die(header("Location: login.php"));
 } else {
   $email = $_SESSION['user'];
-  $query = "SELECT * FROM user WHERE email = '$email'";
+  $query = "SELECT * FROM user WHERE email = '$email'"; //Retrive the user details
   $result = mysqli_query($conn, $query);
   $user = mysqli_fetch_assoc($result);
   $user_id = $user['user_id'];
@@ -17,7 +18,8 @@ if (!isset($_SESSION['user'])) {
 
 if (isset($_SESSION['user'])) { /* Page to output if login was successful */
 
-$pagename = "$user[firstname] Dashboard";
+$pagename = "$user[firstname] Dashboard"; // page title
+//Output the head and Nav Bar
 echo <<<_END
 <!DOCTYPE html>
 <html lang="en">
@@ -67,27 +69,28 @@ echo <<<_END
       </div>
       <div class="row margin-50">
 _END;
+//End of Output the head and Nav Bar
 
   // Compute the dashboard Stat
   $query = "SELECT * FROM goals WHERE user_id = '$user_id' ORDER BY goal_id DESC";
   $result = mysqli_query($conn, $query);
   $qrow = mysqli_query($conn, "SELECT COUNT(*) FROM goals WHERE user_id = '$user_id' ORDER BY goal_id DESC");
-  if ($qrow == FALSE) {
-    $row[0] = 0;
+  if ($qrow == FALSE) { // Fix the error passing boolean to the mysqli_fetch_array() function
+    $row[0] = 0;        // when the user asn't created any goals
   } else {
-    $row = mysqli_fetch_array($qrow, MYSQLI_NUM);
+    $row = mysqli_fetch_array($qrow, MYSQLI_NUM); // number of goals in related to the user
   }
   
 
-  if ($row[0] == 0) {
-    $t_goal = 0;
-    $t_todo = 0;
-    $c_goal = 0;
-    $c_todo = 0;
+  if ($row[0] == 0) { // when the user hasn't created any goals
+    $t_goal = 0; //Total number of goals
+    $t_todo = 0; // Total number of todo's
+    $c_goal = 0; // Completed goals
+    $c_todo = 0; // Completed todo's
   } else {
-    for ($i = 0;$i < $row[0];++$i) {
-      $goals = mysqli_fetch_array($result, MYSQLI_ASSOC);
-      $t_goal = $t_goal + 1;
+    for ($i = 0;$i < $row[0];++$i) { // loop through the result
+      $goals = mysqli_fetch_array($result, MYSQLI_ASSOC); // Convert mySql result to array
+      $t_goal = $t_goal + 1; // Count the Goals
 
       $g_id = $goals['goal_id'];
       $query1 = "SELECT * FROM todo WHERE goal_id = '$g_id'";
@@ -96,13 +99,13 @@ _END;
       $not_completed = 0;
 
       $qrow1 = mysqli_query($conn, "SELECT COUNT(*) FROM todo WHERE goal_id = '$g_id'");
-      if ($qrow1 == FALSE) {
-        $row1[0] = 0;
+      if ($qrow1 == FALSE) { // Fix the error passing boolean to the mysqli_fetch_array() function
+        $row1[0] = 0;        // when the user asn't created any goals
       } else {
-        $row1 = mysqli_fetch_array($qrow1, MYSQLI_NUM);
+        $row1 = mysqli_fetch_array($qrow1, MYSQLI_NUM); // number of goals in related to the user
       }
 
-      for ($j = 0;$j < $row1[0];++$j) {
+      for ($j = 0;$j < $row1[0];++$j) { // loop through the result
         $todos = mysqli_fetch_array($result1, MYSQLI_ASSOC);
         $t_todo = $t_todo + 1;
 
@@ -150,10 +153,10 @@ _END;
   $result = mysqli_query($conn, $query);
   
   $qrow = mysqli_query($conn, "SELECT COUNT(*) FROM goals WHERE user_id = '$user_id' ORDER BY goal_id");
-  if ($qrow == FALSE) {
-    $row[0] = 0;
+  if ($qrow == FALSE) { // Fix the error passing boolean to the mysqli_fetch_array() function
+    $row[0] = 0;        // when the user asn't created any goals
   } else {
-    $row = mysqli_fetch_array($qrow, MYSQLI_NUM);
+    $row = mysqli_fetch_array($qrow, MYSQLI_NUM); // number of goals in related to the user
   }
 
   if ($row[0] > 5) {
@@ -173,10 +176,10 @@ _END;
       $not_completed = 0;
 
       $qrow1 = mysqli_query($conn, "SELECT COUNT(*) FROM todo WHERE goal_id = '$g_id'");
-      if ($qrow1 == FALSE) {
-        $row1[0] = 0;
+      if ($qrow1 == FALSE) { // Fix the error passing boolean to the mysqli_fetch_array() function
+        $row1[0] = 0;        // when the user asn't created any goals
       } else {
-        $row1 = mysqli_fetch_array($qrow1, MYSQLI_NUM);
+        $row1 = mysqli_fetch_array($qrow1, MYSQLI_NUM); // number of goals in related to the user
       }
 
       for ($j = 0;$j < $row1[0];++$j) {
@@ -201,7 +204,7 @@ _END;
         $width = number_format($per, 0);
       }
 
-      switch ($per) {
+      switch ($per) { // Progress bar and percentage color
           case $per <= 20:
               $color = "danger";
               break;
@@ -218,6 +221,7 @@ _END;
               $color = "";
       }
 
+// Display goals
 echo <<<_END
           <div class="row mb-1">
             <div class="col-6 col-md-4">
@@ -245,8 +249,7 @@ _END;
     }
   }
 
-  //$user = $_SESSION['user'];
-$pagename = "Welcome $user[firstname]";
+  // Output footer
 echo <<<_END
         </div>
       </div>
