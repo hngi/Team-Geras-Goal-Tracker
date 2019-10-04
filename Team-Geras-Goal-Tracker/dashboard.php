@@ -71,16 +71,21 @@ _END;
   // Compute the dashboard Stat
   $query = "SELECT * FROM goals WHERE user_id = '$user_id' ORDER BY goal_id DESC";
   $result = mysqli_query($conn, $query);
-  $row = mysqli_num_rows($result);
+  $qrow = mysqli_query($conn, "SELECT COUNT(*) FROM goals WHERE user_id = '$user_id' ORDER BY goal_id DESC");
+  if ($qrow == FALSE) {
+    $row[0] = 0;
+  } else {
+    $row = mysqli_fetch_array($qrow, MYSQLI_NUM);
+  }
+  
 
-  if ($row == 0) {
-    echo "<p>You haven't created any goals</p>";
+  if ($row[0] == 0) {
     $t_goal = 0;
     $t_todo = 0;
     $c_goal = 0;
     $c_todo = 0;
   } else {
-    for ($i = 0;$i < $row;++$i) {
+    for ($i = 0;$i < $row[0];++$i) {
       $goals = mysqli_fetch_array($result, MYSQLI_ASSOC);
       $t_goal = $t_goal + 1;
 
@@ -90,9 +95,14 @@ _END;
       $completed = 0;
       $not_completed = 0;
 
-      $row1 = mysqli_num_rows($result1);
+      $qrow1 = mysqli_query($conn, "SELECT COUNT(*) FROM todo WHERE goal_id = '$g_id'");
+      if ($qrow1 == FALSE) {
+        $row1[0] = 0;
+      } else {
+        $row1 = mysqli_fetch_array($qrow1, MYSQLI_NUM);
+      }
 
-      for ($j = 0;$j < $row1;++$j) {
+      for ($j = 0;$j < $row1[0];++$j) {
         $todos = mysqli_fetch_array($result1, MYSQLI_ASSOC);
         $t_todo = $t_todo + 1;
 
@@ -138,12 +148,22 @@ _END;
   // Display 5 recently added Goals
   $query = "SELECT * FROM goals WHERE user_id = '$user_id' ORDER BY goal_id DESC LIMIT 5";
   $result = mysqli_query($conn, $query);
-  $row = mysqli_num_rows($result);
+  
+  $qrow = mysqli_query($conn, "SELECT COUNT(*) FROM goals WHERE user_id = '$user_id' ORDER BY goal_id");
+  if ($qrow == FALSE) {
+    $row[0] = 0;
+  } else {
+    $row = mysqli_fetch_array($qrow, MYSQLI_NUM);
+  }
 
-  if ($row == 0) {
+  if ($row[0] > 5) {
+    $row[0] = 5;
+  }
+
+  if ($row[0] == 0) {
     echo "<p>You haven't created any goals</p>";
   } else {
-    for ($i = 0;$i < $row;++$i) {
+    for ($i = 0;$i < $row[0];++$i) {
       $goals = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
       $g_id = $goals['goal_id'];
@@ -152,9 +172,14 @@ _END;
       $completed = 0;
       $not_completed = 0;
 
-      $row1 = mysqli_num_rows($result1);
+      $qrow1 = mysqli_query($conn, "SELECT COUNT(*) FROM todo WHERE goal_id = '$g_id'");
+      if ($qrow1 == FALSE) {
+        $row1[0] = 0;
+      } else {
+        $row1 = mysqli_fetch_array($qrow1, MYSQLI_NUM);
+      }
 
-      for ($j = 0;$j < $row1;++$j) {
+      for ($j = 0;$j < $row1[0];++$j) {
         $todos = mysqli_fetch_array($result1, MYSQLI_ASSOC);
 
         if ($todos['completed'] == 1) {
