@@ -250,8 +250,8 @@ $pagename = "Welcome $user[firstname]";
 echo <<<_END
         </div>
       </div>
-    </div>
-    <footer>
+
+      <footer>
         <div class="row">
           <div class="col-12 mt-5">
             <a href="faq.html">FAQ</a> | 
@@ -261,6 +261,7 @@ echo <<<_END
           </div>
         </div>
       </footer>
+    </div>
   </div>
 </body>
 </html>
