@@ -1,0 +1,147 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+    font-family: causive;
+}
+
+.sidebar-wrapper {
+    overflow-y: scroll;
+    z-index: 1000;
+    position: fixed;
+    left: 175px;
+    width: 15%;
+    height: 100%;
+    margin-left: -175px;
+    overflow-y: auto;
+    background: #222222;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.a-links{
+	float: right;
+    font-family: causive;
+}
+
+.align-left{
+    margin-left: 15%;
+}
+
+h5{
+    margin-left: 40px;
+    font-size: 12px;
+    font-family: causive;
+    color: white;
+}
+
+.img{
+    margin-left: 30px;
+    margin-top: 20px;
+    width: 120px;
+    height: 120px;
+}
+
+.wrapper{
+    margin-left: 13%;
+    padding-left: 20px;
+    background-color: #1b1a1a;
+    color: white;
+    padding: 10px;
+}
+
+.a-style{
+    text-decoration: none;
+  font-size: 15px;
+  color: white;
+}
+
+.wrapper li{
+    font-size: 15px;
+}
+
+.sidebar-wrapper ul{
+    color: white;
+    padding-top: 30px;
+}
+
+.sidebar-wrapper li{
+    color: white;
+    list-style: none;
+    padding: 10px;
+  font-size: 13px;
+}
+
+.sidebar-wrapper a {
+  padding-left: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+.main{
+    background-color: #c3c0b7;
+    margin-left: 15%;
+}
+
+.card-content{
+    padding: 30px 15px;
+}
+
+.fa{
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+.checkbox{
+    padding-right: 5px !important;
+}
+
+.col-3 li{
+    list-style: none;
+  font-size: 13px;
+}
+
+.col-3 a{
+    text-decoration: none;
+  color: black;
+}
+
+.col-3 h4{
+    font-family: causive;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.badge{
+    float: right;
+}
+
+.col-7 a{
+    text-decoration: none;
+    color: black;
+}
+
+.col-7 li{
+    font-family: causive;
+}
+
+.col-7 h5{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: causive;
+    color: black;
+    margin-left: 0;
+}
+
+.card1{
+    width: 700px;
+}
+
+.card2{
+    display: inline;
+}
