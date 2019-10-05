@@ -67,14 +67,14 @@ label{
 
 .right-box input[type="text"]{
     border: groove;
-    padding-left: 100px;
+    padding-left: 5px;
     padding-top: 10px;
     background: transparent;
     
 }
 
 .right-box input[id="text"]{
-    padding: 100px;
+    padding: 5px;
     top: 100;
     border: groove;
     border-collapse: black;
