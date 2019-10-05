@@ -4,12 +4,11 @@ require_once('dbcon.php');
 $t_goal = $t_todo = $c_goal = $c_todo = $width = 0;
 $color = "";
 
-//Test if the user is logged in 
 if (!isset($_SESSION['user'])) {
   die(header("Location: login.php"));
 } else {
   $email = $_SESSION['user'];
-  $query = "SELECT * FROM user WHERE email = '$email'"; //Retrive the user details
+  $query = "SELECT * FROM user WHERE email = '$email'";
   $result = mysqli_query($conn, $query);
   $user = mysqli_fetch_assoc($result);
   $user_id = $user['user_id'];
@@ -18,8 +17,7 @@ if (!isset($_SESSION['user'])) {
 
 if (isset($_SESSION['user'])) { /* Page to output if login was successful */
 
-$pagename = "$user[firstname] Dashboard"; // page title
-//Output the head and Nav Bar
+$pagename = "$user[firstname] Dashboard";
 echo <<<_END
 <!DOCTYPE html>
 <html lang="en">
@@ -34,42 +32,47 @@ echo <<<_END
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="dashboard.php">Geras Goal Tracker</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNav"
-    aria-controls="navbarsNav"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <a class="navbar-brand" href="dashboard.php">Geras Goal Tracker</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarsNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="dashboard.php"
-          >Home <span class="sr-only">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="faq.html">FAQ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Team</a>
-      </li>
-      <li class="nav-item">
-        <a href="logout.php" class="nav-link"><b>Log out</b></a>
-      </li>      
-    </ul>
-  </div>
-</nav>
-
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="dashboard.php"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="faq.html">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Privacy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li>
+            <a href="logout.php" class=""><b>Log out</b></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   <div class="menu pt-2">
     <div class="container-fluid">
       <div class="row">
@@ -100,32 +103,24 @@ echo <<<_END
       <div class="row">
         <div class="col-6">
           <a href="#"><b>What have you achieved today?</b></a>
-        </div>
-      </div>
       <div class="row margin-50">
 _END;
-//End of Output the head and Nav Bar
 
   // Compute the dashboard Stat
   $query = "SELECT * FROM goals WHERE user_id = '$user_id' ORDER BY goal_id DESC";
   $result = mysqli_query($conn, $query);
-  $qrow = mysqli_query($conn, "SELECT COUNT(*) FROM goals WHERE user_id = '$user_id' ORDER BY goal_id DESC");
-  if ($qrow == FALSE) { // Fix the error passing boolean to the mysqli_fetch_array() function
-    $row[0] = 0;        // when the user asn't created any goals
-  } else {
-    $row = mysqli_fetch_array($qrow, MYSQLI_NUM); // number of goals in related to the user
-  }
-  
+  $row = mysqli_num_rows($result);
 
-  if ($row[0] == 0) { // when the user hasn't created any goals
-    $t_goal = 0; //Total number of goals
-    $t_todo = 0; // Total number of todo's
-    $c_goal = 0; // Completed goals
-    $c_todo = 0; // Completed todo's
+  if ($row == 0) {
+    echo "<p>You haven't created any goals</p>";
+    $t_goal = 0;
+    $t_todo = 0;
+    $c_goal = 0;
+    $c_todo = 0;
   } else {
-    for ($i = 0;$i < $row[0];++$i) { // loop through the result
-      $goals = mysqli_fetch_array($result, MYSQLI_ASSOC); // Convert mySql result to array
-      $t_goal = $t_goal + 1; // Count the Goals
+    for ($i = 0;$i < $row;++$i) {
+      $goals = mysqli_fetch_array($result, MYSQLI_ASSOC);
+      $t_goal = $t_goal + 1;
 
       $g_id = $goals['goal_id'];
       $query1 = "SELECT * FROM todo WHERE goal_id = '$g_id'";
@@ -133,14 +128,9 @@ _END;
       $completed = 0;
       $not_completed = 0;
 
-      $qrow1 = mysqli_query($conn, "SELECT COUNT(*) FROM todo WHERE goal_id = '$g_id'");
-      if ($qrow1 == FALSE) { // Fix the error passing boolean to the mysqli_fetch_array() function
-        $row1[0] = 0;        // when the user asn't created any goals
-      } else {
-        $row1 = mysqli_fetch_array($qrow1, MYSQLI_NUM); // number of goals in related to the user
-      }
+      $row1 = mysqli_num_rows($result1);
 
-      for ($j = 0;$j < $row1[0];++$j) { // loop through the result
+      for ($j = 0;$j < $row1;++$j) {
         $todos = mysqli_fetch_array($result1, MYSQLI_ASSOC);
         $t_todo = $t_todo + 1;
 
@@ -186,22 +176,12 @@ _END;
   // Display 5 recently added Goals
   $query = "SELECT * FROM goals WHERE user_id = '$user_id' ORDER BY goal_id DESC LIMIT 5";
   $result = mysqli_query($conn, $query);
-  
-  $qrow = mysqli_query($conn, "SELECT COUNT(*) FROM goals WHERE user_id = '$user_id' ORDER BY goal_id");
-  if ($qrow == FALSE) { // Fix the error passing boolean to the mysqli_fetch_array() function
-    $row[0] = 0;        // when the user asn't created any goals
-  } else {
-    $row = mysqli_fetch_array($qrow, MYSQLI_NUM); // number of goals in related to the user
-  }
+  $row = mysqli_num_rows($result);
 
-  if ($row[0] > 5) {
-    $row[0] = 5;
-  }
-
-  if ($row[0] == 0) {
+  if ($row == 0) {
     echo "<p>You haven't created any goals</p>";
   } else {
-    for ($i = 0;$i < $row[0];++$i) {
+    for ($i = 0;$i < $row;++$i) {
       $goals = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
       $g_id = $goals['goal_id'];
@@ -210,14 +190,9 @@ _END;
       $completed = 0;
       $not_completed = 0;
 
-      $qrow1 = mysqli_query($conn, "SELECT COUNT(*) FROM todo WHERE goal_id = '$g_id'");
-      if ($qrow1 == FALSE) { // Fix the error passing boolean to the mysqli_fetch_array() function
-        $row1[0] = 0;        // when the user asn't created any goals
-      } else {
-        $row1 = mysqli_fetch_array($qrow1, MYSQLI_NUM); // number of goals in related to the user
-      }
+      $row1 = mysqli_num_rows($result1);
 
-      for ($j = 0;$j < $row1[0];++$j) {
+      for ($j = 0;$j < $row1;++$j) {
         $todos = mysqli_fetch_array($result1, MYSQLI_ASSOC);
 
         if ($todos['completed'] == 1) {
@@ -239,24 +214,23 @@ _END;
         $width = number_format($per, 0);
       }
 
-      switch ($per) { // Progress bar and percentage color
+      switch ($per) {
           case $per <= 20:
-              $color = "danger";
+              $color = "bg-danger";
               break;
           case $per <= 50:
-              $color = "warning";
+              $color = "bg-warning";
               break;
           case $per <= 75:
-              $color = "primary";
+              $color = "bg-primary";
               break;
           case $per <= 100:
-              $color = "success";
+              $color = "bg-success";
               break;
           default:
               $color = "";
       }
 
-// Display goals
 echo <<<_END
           <div class="row mb-1">
             <div class="col-6 col-md-4">
@@ -267,9 +241,9 @@ echo <<<_END
             </div>
             <div class="col-6 col-md-4">
               <div class="progress">
-                <span class="bg-$color" style="width: $width%;"></span>
+                <span class="$color" style="width: $width%;"></span>
               </div>
-              <b class="text-$color ml-1">$per%</b>
+              <b class="text-warning ml-1">$per%</b>
             </div>
           </div>
 
@@ -284,7 +258,8 @@ _END;
     }
   }
 
-  // Output footer
+  //$user = $_SESSION['user'];
+$pagename = "Welcome $user[firstname]";
 echo <<<_END
         </div>
       </div>
@@ -298,16 +273,42 @@ echo <<<_END
       </footer>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    
-        <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.3/dist/js/bootstrap.bundle.min.js"><\/script>')</script>
-        
-        <script src="https://getbootstrap.com/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script> 
+ <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
 </body>
 </html>
 
 _END;
 
+/**
+
+        </div>
+
+        <div class="footer">
+            <p class="footer-p"> <span class="left"> TERMS OF USE </span> <span class="middle"> PRIVACY OF POLICY </span>
+            <span class="right">&copy;2019</span> </p>                   
+
+        </div>
+
+    </div>
+
+    <script src="script/main.js"></script>
+</body>
+</html>
+**/
 } else {
   header("location:login.php");
 }
