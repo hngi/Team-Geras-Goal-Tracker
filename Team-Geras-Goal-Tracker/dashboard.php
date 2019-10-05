@@ -32,7 +32,7 @@ echo <<<_END
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="dashboard.php">Geras Goal Tracker</a>
+      <a class="navbar-brand" href="Landingpage.html">Geras Goal Tracker</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -56,16 +56,16 @@ echo <<<_END
             <a class="nav-link" href="faq.html">FAQ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Privacy</a>
+            <a class="nav-link" href="Privacypolicy">Privacy</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Team</a>
+            <a class="nav-link" href="team-overview.html">Team</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="aboutus.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="ContactUs.html">Contact</a>
           </li>
           <li>
             <a href="logout.php" class=""><b>Log out</b></a>

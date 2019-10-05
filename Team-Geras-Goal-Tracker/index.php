@@ -101,28 +101,27 @@ if (isset($_POST['btn-signup'])) {
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="dashboard.php"
-              >Home <span class="sr-only">(current)</span></a
+              >Dashboard <span class="sr-only"></span></a
             >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="faq.html">FAQ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Privacy</a>
+            <a class="nav-link" href="Privacypolicy.html">Privacy</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Team</a>
+            <a class="nav-link" href="team-overview.html">Team</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="aboutus.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="ContactUs.html">Contact</a>
           </li>
         </ul>
       </div>
     </nav>
-
     <div class="row">
       <div class="column1 img1">
         <h1>WE break your GOALS into smaller bits.</h1>
