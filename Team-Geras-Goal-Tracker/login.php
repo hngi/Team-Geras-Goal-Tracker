@@ -18,38 +18,44 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="dashboard.php">Geras Goal Tracker</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNav"
-    aria-controls="navbarsNav"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <a class="navbar-brand" href="dashboard.php">Geras Goal Tracker</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarsNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <div class="collapse navbar-collapse" id="navbarsNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="dashboard.php"
-          >Home <span class="sr-only">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="faq.html">FAQ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Team</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="dashboard.php"
+              >Dashboard<span class="sr-only"></span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="faq.html">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="PrivacyPolicy">Privacy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="team-overview.html">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="aboutus.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ContactUs.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
 <?php //Login.php
 require_once('dbcon.php');
